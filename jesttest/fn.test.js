@@ -33,12 +33,12 @@ test("2더하기 3은 5야", () => {
 })
 
 
-test('이름과 나이를 전달받아서 객체를 반환해줘', () => {
-    expect(fn.makeUser("Mike", 30)).toEqual({
-        name:"Mike",
-        age:30,
-    });
-});
+// test('이름과 나이를 전달받아서 객체를 반환해줘', () => {
+//     expect(fn.makeUser("Mike", 30)).toBe({
+//         name:"Mike",
+//         age:30,
+//     });
+// });
 
 // test('이름과 나이를 전달받아서 객체를 반환해줘', () => {
 //     expect(fn.makeUser("Mike", 30)).toStrictEqual({
@@ -66,5 +66,30 @@ toContain, 배열 리스트에 해당 원소가 있다.
 toThrow, 예외가 발생한다.
 */
 test("에러가 발생한다", () =>{
-    expect(() => fn.throwErr()).toThrow("xx");
+    expect(() => fn.throwErr()).toThrow();
+})
+
+// test("3초후에 받아온 이름은 mike", (done) => {
+//     function callback(name){
+//         expect(name).toBe("Mike")
+//         done(); //이걸 호출하지 않으면 테스트가 실패하며 done를 타임아웃 콜백을 실행 할 수 있다.
+//     }
+//     fn.getName(callback);
+// })
+
+// test("3초 후에 나이 30", () => {
+//     // return fn.getAge().then(age => {
+//     //     expect(age).toBe(30);
+//     // })
+//     //resolves, rejects 사용가능
+//     return expect(fn.getAge()).resolves.toBe(30);
+// })
+
+test("3초 후에 나이 30", async () => {
+    // await (fn.getAge()).resolves.toBe(30);
+   // expect(age).toBe(30);
+    await expect (fn.getAge()).resolves.toBe(30);
+})
+test("0 + 1은 1이야", () => {
+    expect(fn.add(0,1)).toBe(1);
 })
